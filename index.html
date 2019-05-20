@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    
+    <img src= "good.jpg" alt="please wait" height="40px" weight="40px"  align="left"> 
+    <title>Employee Record</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+</head>
+<body>
+    <header class="main-header">
+        <h3 class="brand">Employee Record</h3>
+        <nav class="main-nav">
+            <button class="btn" id="add-employee">Add Employee</button>
+            <input type="text" class="form-control form-header">
+            <button class="btn">Search</button>
+            <select  class="form-control form-header">
+                <option>Designation Decendir</option>
+            </select>
+            <button class="btn">Sort</button>
+            <button class="btn" id="reset">Reset</button>
+        </nav>
+    </header>
+
+    <main>
+
+    </main>
+
+    <div id="simplemodal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <form >
+                <label for="name">Name</label>
+                <input type="text" id="name" class="form-control">
+
+                <label for="Designation">Designation</label>
+                <input type="text" id="designation" class="form-control">
+
+                <label for="department">Department</label>
+                <input type="text" id="department" class="form-control">
+
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" class="form-control">
+
+                <label for="number">Contact Number</label>
+                <input type="text" id="number" onchange="myfun()" class="form-control">
+                <span id="messages" class="text-danger"></span>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control" required/>
+
+                <label for="address">Address</label>
+                <input type="text" id="address" class="form-control">
+
+                <label for="image">Profile picture</label>
+                <input type="file" id="image" class="form-control" onchange="loadFile(event)">
+
+               
+
+                <button class="btn form-button" type="button">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="main.js"></script>
+</body>
+</html>
