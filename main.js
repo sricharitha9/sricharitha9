@@ -58,7 +58,6 @@ submit.addEventListener("click",()=>{
     main.appendChild(div);
     array=localStorage.getItem("array");
     array.push(div);
-    localStorage.setItem(array);
     const next = firstchild.nextElementSibling;
     
     const next1=next.nextElementSibling;
