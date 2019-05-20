@@ -5,8 +5,47 @@ const closeBtn=document.querySelector(".close-btn");
 const submit=document.querySelector(".form-button");
 const resetButton=document.querySelector("#reset");
 var path ="";
+let array=[];
 
-const array=[];
+getData();
+populateData();
+
+function getData(){
+    const temp=localStorage.getItem("employees");
+    if (temp){
+        array=JSON.parse(temp);
+    }
+
+}
+
+function storeData(element){
+    array.push(element.innerHTML);
+    localStorage.setItem("employees",JSON.stringify(array));
+}
+
+function populateData(){
+    for (let item of array){
+        const div=createItem();
+        div.innerHTML=item;
+        main.appendChild(div);
+        const firstchild=div.firstElementChild;
+        const next = firstchild.nextElementSibling;
+        next.style.display="none";
+        firstchild.addEventListener("click",function(){
+            if (next.style.display==="none"){
+                return next.style.display="inline-block"
+            }
+            next.style.display="none";
+        })
+    }
+}
+
+function createItem(){
+    const div=document.createElement("div");
+    div.classList.add("container");
+    return div;
+}
+
 // form data
 
 resetButton.addEventListener("click",()=>{
@@ -53,21 +92,18 @@ submit.addEventListener("click",()=>{
     );
     const Image=div.image;
     div=div.employee;
-    const firstchild=div.firstChild;
+    storeData(div);
+    const firstchild=div.firstElementChild;
     div.classList.add("container");
     main.appendChild(div);
-    array=localStorage.getItem("array");
-    array.push(div);
     const next = firstchild.nextElementSibling;
-    
-    const next1=next.nextElementSibling;
-    next1.appendChild(Image);
-    next1.style.display="none"
-    next.addEventListener("click",function(){
-        if (next1.style.display==="none"){
-           return next1.style.display="inline-block"
+    next.appendChild(Image);
+    next.style.display="none";
+    firstchild.addEventListener("click",function(){
+        if (next.style.display==="none"){
+           return next.style.display="inline-block"
         }
-    	next1.style.display="none";
+    	next.style.display="none";
     })
     modal.style.display="none"
 })
@@ -84,7 +120,7 @@ function createEmployee(name,designation,department,dob,number,email,address,ima
     const employeeRecord=document.createElement("div");
     employeeRecord.innerHTML=`
    
-       <button class="butn toggle-button" onclick ="toggle('container')">employee</button>
+       <button class="butn toggle-button">employee</button>
     
      <div>
     
